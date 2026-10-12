@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Ring Timer — Design Story by Aleksei Shirokov for Dupli Espreso.">
+  <title>Ring Timer Design Story — Dupli Espreso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;650;700&family=Playfair+Display:ital,wght@0,650;1,650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Article-specific media & layout enhancements sharing style.css tokens */
+    .story-media {
+      grid-column: 4 / 10;
+      margin: 24px 0 32px;
+    }
+    .story-media img {
+      width: 100%;
+      height: auto;
+      max-width: 680px;
+      display: block;
+      border-radius: 4px;
+    }
+    .story-media figcaption {
+      margin-top: 8px;
+      font-size: var(--type-small);
+      color: var(--muted);
+    }
+    blockquote.feedback-quotes {
+      grid-column: 4 / 10;
+      margin: 20px 0 32px;
+      padding-left: 20px;
+      border-left: 2px solid var(--ink);
+      font-style: italic;
+      color: var(--ink);
+    }
+    blockquote.feedback-quotes ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    blockquote.feedback-quotes li {
+      margin-bottom: 10px;
+    }
+    blockquote.feedback-quotes li:last-child {
+      margin-bottom: 0;
+    }
+    .back-nav {
+      margin-top: 32px;
+      display: inline-block;
+    }
+    @media (max-width: 760px) {
+      .story-media, blockquote.feedback-quotes {
+        grid-column: 1 / 7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap dictionary" aria-label="Dictionary entry">
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <div class="wordmark">Dupli Espreso</div>
+    </a>
+    <div class="pronunciation">/ˈduːpli esˈpresoʊ/</div>
+    <div class="definition"><em>Serbian · phrase</em><br>“double espresso”</div>
+  </header>
+
+  <main>
+    <section class="wrap hero" aria-labelledby="page-title">
+      <p class="eyebrow">Design Story</p>
+      <h1 id="page-title">Ring Timer</h1>
+      <p class="intro">Goal: Make a handsome timer to overcome procrastination.</p>
+    </section>
+
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Aleksei Shirokov PR Dupli Espreso<br>Dunavski Kej, 48<br>Belgrade, Serbia</span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
