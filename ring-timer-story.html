@@ -17,6 +17,12 @@
       margin: 24px 0 32px;
     }
     .story-media img {
+      height: auto;
+      max-width: 680px;
+      display: block;
+      border-radius: 4px;
+    }
+    .story-media video {
       width: 100%;
       height: auto;
       max-width: 680px;
@@ -51,9 +57,26 @@
       margin-top: 32px;
       display: inline-block;
     }
+    .image-pair {
+      grid-column: 4 / 12;
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+      margin: 24px 0 0 0;
+    }
+    .image-pair img {
+      border: 1px solid var(--quiet); 
+      border-radius: 4px;
+    }
     @media (max-width: 760px) {
-      .story-media, blockquote.feedback-quotes {
+      .story-media, blockquote.feedback-quotes, .image-pair {
         grid-column: 1 / 7;
+      }
+      .image-pair {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        align-items: flex-start;
       }
     }
   </style>
@@ -71,9 +94,136 @@
     <section class="wrap hero" aria-labelledby="page-title">
       <p class="eyebrow">Design Story</p>
       <h1 id="page-title">Ring Timer</h1>
-      <p class="intro">Goal: Make a handsome timer to overcome procrastination.</p>
+      <p class="intro">Making a&nbsp;handsome timer to fight procrastination</p>
     </section>
 
+    
+    <section class="section name-band">
+      <div class="wrap story-row">
+        <h2 class="section-label">01 / The Origin</h2>
+        <div class="copy">
+          <p>From the excellent online course “<a href="https://www.coursera.org/learn/learning-how-to-learn">Learning How to Learn</a>”, I&nbsp;got that focusing on a&nbsp;process rather than a&nbsp;product helps prevent procrastination. The easiest way to put this into practice is Pomodoro Technique.</p>
+          <p>This technique was developed in the late 1980s by Francesco Cirillo, who found that alternating intervals of focused work with short breaks can significantly improve productivity. He used 25 minutes for work and 5 minutes for rest. He called each work interval a&nbsp;pomodoro because he used a&nbsp;mechanical timer shaped like a&nbsp;tomato (pomodoro in Italian).</p>
+          <p>It’s easy to get started and avoid distractions when you know that a&nbsp;piece of work is limited in time and that you can rest once the time is up.</p>
+          <p>Moreover, regular breaks can bring sudden flashes of insight because your brain is no longer overfocused.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section craft-section">
+      <div class="wrap story-row">
+        <h2 class="section-label">02 / The Concept</h2>
+        <div class="copy">
+          <p class="lead">I&nbsp;started using the standard iOS timer.</p> 
+          <p>It was quite good. But that timer can run only one interval in time. I&nbsp;quickly got tired of resetting different time intervals back and forth.</p>
+          <p>Looking at the iOS timer, I&nbsp;wondered: what if I&nbsp;could divide a&nbsp;circle of time into segments with just a&nbsp;swipe of my finger? Like in Fruit Ninja!</p>
+          <p>I&nbsp;sketched the idea, and it looked promising: I&nbsp;could add intervals by moving my finger outward from the timer ring and remove them by dragging the markers inward.</p>
+        </div>
+        <figure class="story-media">
+          <img src="ring-timer-scetch.jpeg" alt="Sketch of the Ring Timer concept" loading="lazy" style="border: 0">
+          <figcaption>Initial sketch exploring gesture controls for timer intervals.</figcaption>
+        </figure>        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="wrap story-row">
+        <h2 class="section-label">03 / Prototyping</h2>
+        <div class="copy">
+          <p class="lead">I&nbsp;built a&nbsp;prototype.</p>
+          <p>I&nbsp;added familiar ‘+’ and ‘−’ buttons, along with an illustrative animation to support the new way of handling time segments.</p>
+        </div>
+
+        <figure class="story-media">
+          <img src="ring-timer-prototype.png" alt="Ring Timer prototype" loading="lazy" style="width:250px; border: 1px solid var(--quiet);">
+        </figure>
+
+        <div class="copy">
+          <p>I&nbsp;showed people a&nbsp;prototype and got some feedback:</p>
+        </div>
+
+        <blockquote class="feedback-quotes">
+          <ul>
+            <li>“I&nbsp;can’t figure out the current time. The arrow is too small.”</li>
+            <li>“It’s great that I&nbsp;can see all the segments at the same time.”</li>
+            <li>“Too many numbers on the screen.”</li>
+            <li>“It’s not clear that I&nbsp;can add interval with a&nbsp;finger.”</li>
+            <li>“It’s cool and handy to add segments with a&nbsp;finger.”</li>
+          </ul>
+        </blockquote>
+
+        <div class="copy">
+          <p>Based on this feedback: I&nbsp;made the timer hand bigger and brighter. I&nbsp;added tiny visual helpers showing you can move segment's markers in and out of the ring. I&nbsp;increased the font size. I&nbsp;allowed users to change colours and toggle the sound for individual segment. The interval ending sound was selected to be audible but not disturbing to colleagues.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap story-row">
+        <h2 class="section-label">04 / Dynamic Grid</h2>
+        <div class="copy">
+          <p class="lead">It came out that it is hard to set interval length precisely, especially on a&nbsp;small iPhone screen.</p>
+          <p>Obvious decision — snap to grid. But which step of grid to choose?</p>
+          <p>The idea was a&nbsp;dynamic grid: faster movement — larger step, slower movement — smaller step for precise positioning.</p>
+          <p>I&nbsp;made a&nbsp;little app to try it out.</p>
+        </div>
+        <div class="copy">
+          <figure class="story-media">
+            <video autoplay="" loop="" muted="" webkit-playsinline="" playsinline="" poster="ring-timer-dynamic-grid.jpg">
+              <source src="ring-timer-dynamic-grid.mp4" type="video/mp4">
+            </video>
+          </figure>
+        </div>
+        <div class="copy">
+          <p>Dynamic grid did not work well in practice. I figured out that humans act more accurately in a&nbsp;consistent environment than when an application tries to help and changes the grid.</p>
+          <p>I&nbsp;decided to stay with a&nbsp;fixed grid. But for a&nbsp;large lap, the step would be a&nbsp;minute; for a&nbsp;small lap — a&nbsp;second.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap story-row">
+        <h2 class="section-label">04 / Fine Tuning</h2>
+        <div class="copy">
+          <p class="lead">I&nbsp;also wanted to save timer presets for later use, so I&nbsp;added that feature.</p>
+        </div>
+        <figure class="story-media">
+          <img src="ring-timer-presets.jpg" alt="Save custom timer presets" loading="lazy" style="width:350px">
+          <figcaption>Save custom timer presets</figcaption>
+        </figure>
+        <div class="copy">
+          <p>Then I&nbsp;moved buttons for a&nbsp;better user experience.</p>
+          <p>I&nbsp;adjusted visual elements to work solid across different device sizes and orientations.</p>
+        </div>
+
+        <div class="image-pair">
+          <img src="ring-timer-portrait.png" alt="Portrait layout" loading="lazy" style="width: 250px;">
+          <img src="ring-timer-landscape.png" alt="Landscape layout" loading="lazy" style="height: 250px;">
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section">
+      <div class="wrap story-row">
+        <h2 class="section-label">05 / Release</h2>
+
+        <div class="copy">
+          <p>I&nbsp;created an application icon.</p>
+        </div>
+
+        <figure class="story-media">
+          <img src="ring-timer-create-logo.png" alt="Ring Timer app icon design" loading="lazy" style="max-width: 450px;">
+        </figure>
+
+        <div class="copy">
+          <p>And finally, I&nbsp;published the app on the App Store.</p>
+          <a class="closing-link" href="#page-title"><img src="Download_on_the_App_Store_Badge_US-UK_135x40.png" width="135" height="40"></a>
+        </div>
+
+      </div>
+    </section>
 
   </main>
 
